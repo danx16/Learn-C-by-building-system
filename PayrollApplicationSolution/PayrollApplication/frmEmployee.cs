@@ -47,7 +47,7 @@ namespace PayrollApplication
             this.Close();
         }
 
-
+        // IMPLICIT VALIDATION
         // Set the EmployeeID to number and backspace only
         private void txtEmployeeID_KeyPress(object sender, KeyPressEventArgs e)
         {
