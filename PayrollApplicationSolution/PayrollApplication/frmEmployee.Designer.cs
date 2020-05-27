@@ -33,7 +33,7 @@
             this.checkBoxIsMember = new System.Windows.Forms.CheckBox();
             this.dtpDateOfBirth = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBoxMaritalStatus = new System.Windows.Forms.GroupBox();
             this.radioButtonSingle = new System.Windows.Forms.RadioButton();
             this.radioButtonMarried = new System.Windows.Forms.RadioButton();
             this.label2 = new System.Windows.Forms.Label();
@@ -70,7 +70,7 @@
             this.buttonReset = new System.Windows.Forms.Button();
             this.buttonPreview = new System.Windows.Forms.Button();
             this.grpBxEmployeeInformation.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.groupBoxMaritalStatus.SuspendLayout();
             this.groupBoxGender.SuspendLayout();
             this.grpBxEmployeeContactDetails.SuspendLayout();
             this.SuspendLayout();
@@ -80,7 +80,7 @@
             this.grpBxEmployeeInformation.Controls.Add(this.checkBoxIsMember);
             this.grpBxEmployeeInformation.Controls.Add(this.dtpDateOfBirth);
             this.grpBxEmployeeInformation.Controls.Add(this.label3);
-            this.grpBxEmployeeInformation.Controls.Add(this.groupBox1);
+            this.grpBxEmployeeInformation.Controls.Add(this.groupBoxMaritalStatus);
             this.grpBxEmployeeInformation.Controls.Add(this.label2);
             this.grpBxEmployeeInformation.Controls.Add(this.txtNationalInsuranceNo);
             this.grpBxEmployeeInformation.Controls.Add(this.label1);
@@ -125,16 +125,16 @@
             this.label3.TabIndex = 11;
             this.label3.Text = "Union Membership : ";
             // 
-            // groupBox1
+            // groupBoxMaritalStatus
             // 
-            this.groupBox1.Controls.Add(this.radioButtonSingle);
-            this.groupBox1.Controls.Add(this.radioButtonMarried);
-            this.groupBox1.Location = new System.Drawing.Point(18, 200);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(204, 41);
-            this.groupBox1.TabIndex = 7;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Marital Status";
+            this.groupBoxMaritalStatus.Controls.Add(this.radioButtonSingle);
+            this.groupBoxMaritalStatus.Controls.Add(this.radioButtonMarried);
+            this.groupBoxMaritalStatus.Location = new System.Drawing.Point(18, 200);
+            this.groupBoxMaritalStatus.Name = "groupBoxMaritalStatus";
+            this.groupBoxMaritalStatus.Size = new System.Drawing.Size(204, 41);
+            this.groupBoxMaritalStatus.TabIndex = 7;
+            this.groupBoxMaritalStatus.TabStop = false;
+            this.groupBoxMaritalStatus.Text = "Marital Status";
             // 
             // radioButtonSingle
             // 
@@ -292,6 +292,7 @@
             // 
             this.comboBoxCountry.FormattingEnabled = true;
             this.comboBoxCountry.Items.AddRange(new object[] {
+            "Please enter a country...",
             "Philippines",
             "India",
             "Indonesia",
@@ -502,8 +503,8 @@
             this.Text = "Manage Employee";
             this.grpBxEmployeeInformation.ResumeLayout(false);
             this.grpBxEmployeeInformation.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.groupBoxMaritalStatus.ResumeLayout(false);
+            this.groupBoxMaritalStatus.PerformLayout();
             this.groupBoxGender.ResumeLayout(false);
             this.groupBoxGender.PerformLayout();
             this.grpBxEmployeeContactDetails.ResumeLayout(false);
@@ -527,7 +528,7 @@
         private System.Windows.Forms.RadioButton radioButtonMale;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBoxMaritalStatus;
         private System.Windows.Forms.RadioButton radioButtonSingle;
         private System.Windows.Forms.RadioButton radioButtonMarried;
         private System.Windows.Forms.Label label2;
