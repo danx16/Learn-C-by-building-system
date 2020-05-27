@@ -1,0 +1,10 @@
+C:\Users\Admin\Documents\Learn-C-by-building-system\PayrollApplicationSolution\PayrollApplication\bin\Debug\PayrollApplication.exe.config
+C:\Users\Admin\Documents\Learn-C-by-building-system\PayrollApplicationSolution\PayrollApplication\bin\Debug\PayrollApplication.exe
+C:\Users\Admin\Documents\Learn-C-by-building-system\PayrollApplicationSolution\PayrollApplication\bin\Debug\PayrollApplication.pdb
+C:\Users\Admin\Documents\Learn-C-by-building-system\PayrollApplicationSolution\PayrollApplication\obj\Debug\PayrollApplication.csprojAssemblyReference.cache
+C:\Users\Admin\Documents\Learn-C-by-building-system\PayrollApplicationSolution\PayrollApplication\obj\Debug\PayrollApplication.frmEmployee.resources
+C:\Users\Admin\Documents\Learn-C-by-building-system\PayrollApplicationSolution\PayrollApplication\obj\Debug\PayrollApplication.Properties.Resources.resources
+C:\Users\Admin\Documents\Learn-C-by-building-system\PayrollApplicationSolution\PayrollApplication\obj\Debug\PayrollApplication.csproj.GenerateResource.cache
+C:\Users\Admin\Documents\Learn-C-by-building-system\PayrollApplicationSolution\PayrollApplication\obj\Debug\PayrollApplication.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Documents\Learn-C-by-building-system\PayrollApplicationSolution\PayrollApplication\obj\Debug\PayrollApplication.exe
+C:\Users\Admin\Documents\Learn-C-by-building-system\PayrollApplicationSolution\PayrollApplication\obj\Debug\PayrollApplication.pdb
