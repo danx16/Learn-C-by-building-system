@@ -14,12 +14,16 @@ namespace PayrollApplication
 {
     public partial class frmEmployee : Form
     {
+        string gender;
+        string maritalStatus;
+        bool isMember;
+
         public frmEmployee()
         {
             InitializeComponent();
         }
 
-        //User Input Validation
+        // User Input Validation
         private bool isControlIsDataValid() 
         {
             // Regular Expression Validation
@@ -257,6 +261,42 @@ namespace PayrollApplication
             return true;
         }
 
+
+        // Checked Items Controls Method
+        private void CheckedItems()
+        {
+            // Checked Gender
+            if (radioButtonMale.Checked)
+            {
+                gender = "Male";
+            } else
+            {
+                gender = "Female";
+            }
+
+            // Checked Marital Status
+            if (radioButtonMarried.Checked)
+            {
+                maritalStatus = "Married";
+            }
+            else
+            {
+                maritalStatus = "Single";
+
+            }
+
+            // Checked Union Member
+            if (checkBoxIsMember.Checked)
+            {
+                isMember = true;
+            }
+            else
+            {
+                isMember = false;
+
+            }
+        }
+
         private void buttonAddEmployee_Click(object sender, EventArgs e)
         {
 
@@ -295,7 +335,16 @@ namespace PayrollApplication
         }
         private void buttonPreview_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Reset");
+            // Arguments are values or stream of data that is passed into a method via the calling method. 
+
+            frmPreview objFormPreview = new frmPreview();
+            CheckedItems(); // To view marital status
+            objFormPreview.PreviewEmployeeData(Convert.ToInt32(txtEmployeeID.Text), txtFirstName.Text, txtLastName.Text, gender, 
+                txtNationalInsuranceNo.Text, dtpDateOfBirth.Text,maritalStatus,isMember, textBoxAddress.Text, 
+                textBoxCity.Text, textBoxPostalCode.Text, comboBoxCountry.Text, textBoxContactNumber.Text, 
+                textBoxEmailAddress.Text, textBoxNotes.Text);
+            objFormPreview.ShowDialog();
+
         }
         private void btnExit_Click(object sender, EventArgs e)
         {

@@ -17,7 +17,11 @@ namespace PayrollApplication
             InitializeComponent();
         }
         //Parameteres are special kind of variables that receives arguments when the method is called. 
-        private void PreviewEmployeeData(int EmployeeID, string FirstName, string LastName, string Gender, string NationalInsurance, string DateOfBirth, string MaritalStatus, bool IsMember, string Address, string City, string PostalCode, string Country, string ContactNumber, string Email, string Notes)
+        public void PreviewEmployeeData(
+                int EmployeeID, string FirstName, string LastName, string Gender, string NationalInsurance, 
+                string DateOfBirth, string MaritalStatus, bool IsMember, string Address, string City, string PostalCode, 
+                string Country, string ContactNumber, string Email, string Notes
+            )
         {
             _labelEmployeeID.Text = Convert.ToString(EmployeeID);
             _labelFirstName.Text = FirstName;
