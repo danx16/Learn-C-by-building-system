@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions; // Regular Expression is a pattern that could be matched against an input text
 
 namespace PayrollApplication
 {
@@ -188,6 +189,23 @@ namespace PayrollApplication
 
         private void buttonAddEmployee_Click(object sender, EventArgs e)
         {
+            // Regular Expression Validation
+            Regex objEmployeeID = new Regex("^[0-9]{3, 4}$");
+            Regex objFirstName = new Regex("^[A-Z][a-zA-Z]*$");
+            Regex objLastName = new Regex("^[A-Z][a-zA-Z]*$");
+
+            // Must be 9 characters ONLY
+            // First 2 characters must be numeric digits
+            // Next 6 characters must be numeric digits
+            // Final character can only be A, B, C, D or space
+            // First character must not be D, F, I, Q, U or V
+            // Second character must not be D, F, I, O, Q, U or V
+            // [Example, NiNo FORMAT = SC123456C]
+            Regex objNI = new Regex(@"^[A-CEGHJ-PR-TW-Z]{1}[A-CEGHJ-NPR-TW-Z]{1}[0-9]{6}[A-D\s]$");
+
+            // 000-00-0000
+            Regex ObjSSN = new Regex(@"^\d{3}-\d{2}-\d{4}$"); // \d = digit
+
             if (isControlIsDataValid()) // To check if the form is already filled.
             {
                 MessageBox.Show("Employee Added!");
