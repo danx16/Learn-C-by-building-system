@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions; // Regular Expression is a pattern that could be matched against an input text
+using System.Net.Mail; //using System.Net.Mail.MailAddress;
 
 namespace PayrollApplication
 {
@@ -20,41 +21,74 @@ namespace PayrollApplication
 
         private bool isControlIsDataValid() 
         {
-            // EmployeeID Validation
+            // Regular Expression Validation
+            Regex objEmployeeID = new Regex("^[0-9]{3,4}$");
+            Regex objFirstName = new Regex("^[A-Z][a-zA-Z]*$");
+            Regex objLastName = new Regex("^[A-Z][a-zA-Z]*$");
+            Regex objNI = new Regex(@"^[A-CEGHJ-PR-TW-Z]{1}[A-CEGHJ-NPR-TW-Z]{1}[0-9]{6}[A-D\s]$");
+            Regex objEmailAddress = new Regex(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$"); // Sample20@gmail.com
+
+            #region // EmployeeID Validation
             if (Convert.ToInt32(txtEmployeeID.Text.Length) < 1)
             {
                 MessageBox.Show("Please, Enter Employee ID", "Data Entry Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtEmployeeID.Focus();
                 txtEmployeeID.BackColor = Color.Silver;
                 return false;
-            } else
+            } else if (!objEmployeeID.IsMatch(txtEmployeeID.Text))  // Regular Expression Validation Applied
+            {
+                MessageBox.Show("Please, Enter a Valid Employee ID", "Data Entry Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtEmployeeID.Focus();
+                txtEmployeeID.BackColor = Color.Silver;
+                return false;
+            }
+            else
             {
                 txtEmployeeID.BackColor = Color.White;
             }
+            #endregion
 
-            // First Name Validation
+            #region // First Name Validation
             if (String.IsNullOrEmpty(txtFirstName.Text))
             {
                 MessageBox.Show("Please, Enter First Name", "Data Entry Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtFirstName.Focus();
                 txtFirstName.BackColor = Color.Silver;
                 return false;
-            } else
+            } else if (!objFirstName.IsMatch(txtFirstName.Text))
+            {
+                MessageBox.Show("Please, Enter a Valid First Name", "Data Entry Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtFirstName.Focus();
+                txtFirstName.BackColor = Color.Silver;
+                return false;
+            } 
+            
+            else
             {
                 txtFirstName.BackColor = Color.White;
             }
+            #endregion
 
-            // Last Name Validation
+            #region // Last Name Validation
             if (txtLastName.Text == "")
             {
                 MessageBox.Show("Please, Enter Last Name", "Data Entry Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtLastName.Focus();
                 txtLastName.BackColor = Color.Silver;
                 return false;
-            } else
+            } else if (!objLastName.IsMatch(txtLastName.Text))
+            {
+                MessageBox.Show("Please, a valid Enter Last Name", "Data Entry Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtLastName.Focus();
+                txtLastName.BackColor = Color.Silver;
+                return false;
+            }
+            
+            else
             {
                 txtLastName.BackColor = Color.Silver;
             }
+            #endregion
 
             // Gender Validation
             if (radioButtonMale.Checked == false && radioButtonFemale.Checked == false)
@@ -70,17 +104,27 @@ namespace PayrollApplication
                 radioButtonFemale.BackColor = Color.CornflowerBlue;
             }
 
-            // National Insurance Validation
+            #region // National Insurance Validation
             if (txtNationalInsuranceNo.Text == "")
             {
                 MessageBox.Show("Please, Enter National Insurance Number", "Data Entry Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtNationalInsuranceNo.Focus();
                 txtNationalInsuranceNo.BackColor = Color.Silver;
                 return false;
-            } else
+            } else if (!objNI.IsMatch(txtNationalInsuranceNo.Text))
+            {
+                MessageBox.Show("Please, a valid Enter National Insurance Number", "Data Entry Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtNationalInsuranceNo.Focus();
+                txtNationalInsuranceNo.BackColor = Color.Silver;
+                return false;
+            } 
+            
+            else
             {
                 txtNationalInsuranceNo.BackColor = Color.White;
             }
+            #endregion
+
             // Marital Status Validation
             if (radioButtonMarried.Checked == false && radioButtonSingle.Checked == false)
             {
@@ -158,7 +202,7 @@ namespace PayrollApplication
                 textBoxContactNumber.BackColor = Color.White;
             }
 
-            // Email Validation
+            #region// Email Validation
             if (textBoxEmailAddress.Text == "")
             {
                 MessageBox.Show("Please, Enter email address", "Data Entry Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -166,10 +210,35 @@ namespace PayrollApplication
                 textBoxEmailAddress.BackColor = Color.Silver;
                 return false;
             }
+
+            //else if (!objEmailAddress.IsMatch(textBoxEmailAddress.Text))
+            //{
+            //    MessageBox.Show("Please, Enter a valid email address", "Data Entry Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    textBoxEmailAddress.Focus();
+            //    textBoxEmailAddress.BackColor = Color.Silver;
+            //    return false;
+            //}
+
+            // OTHER WAY TO VALIDATE EMAIL ON .NET
+            else if (textBoxEmailAddress.Text.Length >= 1)
+            {
+                try
+                {
+                    MailAddress objMail = new MailAddress(textBoxEmailAddress.Text);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error : " + ex.Message, "Data Entry Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxEmailAddress.Focus();
+                    textBoxEmailAddress.BackColor = Color.Silver;
+                    return false;
+                }
+            }
             else
             {
                 textBoxEmailAddress.BackColor = Color.White;
             }
+            #endregion
 
             // Notes Validation
             if (textBoxNotes.Text.Length > 30)
@@ -189,22 +258,6 @@ namespace PayrollApplication
 
         private void buttonAddEmployee_Click(object sender, EventArgs e)
         {
-            // Regular Expression Validation
-            Regex objEmployeeID = new Regex("^[0-9]{3, 4}$");
-            Regex objFirstName = new Regex("^[A-Z][a-zA-Z]*$");
-            Regex objLastName = new Regex("^[A-Z][a-zA-Z]*$");
-
-            // Must be 9 characters ONLY
-            // First 2 characters must be numeric digits
-            // Next 6 characters must be numeric digits
-            // Final character can only be A, B, C, D or space
-            // First character must not be D, F, I, Q, U or V
-            // Second character must not be D, F, I, O, Q, U or V
-            // [Example, NiNo FORMAT = SC123456C]
-            Regex objNI = new Regex(@"^[A-CEGHJ-PR-TW-Z]{1}[A-CEGHJ-NPR-TW-Z]{1}[0-9]{6}[A-D\s]$");
-
-            // 000-00-0000
-            Regex ObjSSN = new Regex(@"^\d{3}-\d{2}-\d{4}$"); // \d = digit
 
             if (isControlIsDataValid()) // To check if the form is already filled.
             {
