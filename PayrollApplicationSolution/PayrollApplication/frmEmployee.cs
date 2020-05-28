@@ -19,6 +19,7 @@ namespace PayrollApplication
             InitializeComponent();
         }
 
+        //User Input Validation
         private bool isControlIsDataValid() 
         {
             // Regular Expression Validation
@@ -274,7 +275,23 @@ namespace PayrollApplication
         }
         private void buttonReset_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Control Reset");
+            txtEmployeeID.Clear();
+            txtFirstName.Clear();
+            txtLastName.Text = "";
+            radioButtonMale.Checked = false;
+            radioButtonFemale.Checked = false;
+            txtNationalInsuranceNo.Text = "";
+            dtpDateOfBirth.Value = new DateTime(1990, 12, 30);
+            radioButtonMarried.Checked = false;
+            radioButtonSingle.Checked = false;
+            checkBoxIsMember.Checked = false;
+            textBoxAddress.Text = string.Empty;
+            textBoxCity.Text = null;
+            textBoxPostalCode.Text = "";
+            comboBoxCountry.SelectedIndex = 0;
+            textBoxContactNumber.Text = "";
+            textBoxEmailAddress.Text = "";
+            textBoxNotes.Text = "";
         }
         private void buttonPreview_Click(object sender, EventArgs e)
         {
