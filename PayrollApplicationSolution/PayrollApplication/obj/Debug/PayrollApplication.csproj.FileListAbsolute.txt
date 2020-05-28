@@ -8,3 +8,4 @@ C:\Users\Admin\Documents\Learn-C-by-building-system\PayrollApplicationSolution\P
 C:\Users\Admin\Documents\Learn-C-by-building-system\PayrollApplicationSolution\PayrollApplication\obj\Debug\PayrollApplication.csproj.CoreCompileInputs.cache
 C:\Users\Admin\Documents\Learn-C-by-building-system\PayrollApplicationSolution\PayrollApplication\obj\Debug\PayrollApplication.exe
 C:\Users\Admin\Documents\Learn-C-by-building-system\PayrollApplicationSolution\PayrollApplication\obj\Debug\PayrollApplication.pdb
+C:\Users\Admin\Documents\Learn-C-by-building-system\PayrollApplicationSolution\PayrollApplication\obj\Debug\PayrollApplication.frmPreview.resources

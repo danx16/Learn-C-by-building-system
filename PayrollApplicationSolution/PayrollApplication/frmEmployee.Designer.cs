@@ -323,18 +323,18 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(19, 251);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(38, 13);
+            this.label10.Size = new System.Drawing.Size(41, 13);
             this.label10.TabIndex = 3;
-            this.label10.Text = "Notes:";
+            this.label10.Text = "Notes :";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(19, 214);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(76, 13);
+            this.label9.Size = new System.Drawing.Size(79, 13);
             this.label9.TabIndex = 12;
-            this.label9.Text = "Email Address:";
+            this.label9.Text = "Email Address :";
             // 
             // textBoxPostalCode
             // 
@@ -348,9 +348,9 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(19, 103);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(67, 13);
+            this.label8.Size = new System.Drawing.Size(70, 13);
             this.label8.TabIndex = 10;
-            this.label8.Text = "Postal Code:";
+            this.label8.Text = "Postal Code :";
             // 
             // label7
             // 
@@ -374,9 +374,9 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(20, 177);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(87, 13);
+            this.label6.Size = new System.Drawing.Size(90, 13);
             this.label6.TabIndex = 6;
-            this.label6.Text = "Contact Number:";
+            this.label6.Text = "Contact Number :";
             // 
             // textBoxCity
             // 
@@ -390,9 +390,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(19, 66);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(27, 13);
+            this.label5.Size = new System.Drawing.Size(30, 13);
             this.label5.TabIndex = 4;
-            this.label5.Text = "City:";
+            this.label5.Text = "City :";
             // 
             // textBoxAddress
             // 
@@ -406,9 +406,9 @@
             this.lblAddress.AutoSize = true;
             this.lblAddress.Location = new System.Drawing.Point(19, 29);
             this.lblAddress.Name = "lblAddress";
-            this.lblAddress.Size = new System.Drawing.Size(48, 13);
+            this.lblAddress.Size = new System.Drawing.Size(51, 13);
             this.lblAddress.TabIndex = 2;
-            this.lblAddress.Text = "Address:";
+            this.lblAddress.Text = "Address :";
             // 
             // btnExit
             // 
