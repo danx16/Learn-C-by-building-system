@@ -332,7 +332,7 @@ namespace PayrollApplication
                     objSqlCommand.ExecuteNonQuery();
 
                     // TODO: This line of code loads data into the 'dbPayrollSystemDataSet.tblEmployee' table. You can move, or remove it, as needed.
-                    this.tblEmployeeTableAdapter.Fill(this.dbPayrollSystemDataSet.tblEmployee);
+                    this.tblEmployeeTableAdapter.Fill(this.dbPayrollSystemDataSet.tblEmployee); 
 
                     // Display success message
                     MessageBox.Show("Employee with ID :" + txtEmployeeID.Text + " " + "has been added successfully!", "Insert Succesful!", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -435,6 +435,61 @@ namespace PayrollApplication
             // TODO: This line of code loads data into the 'dbPayrollSystemDataSet.tblEmployee' table. You can move, or remove it, as needed.
             this.tblEmployeeTableAdapter.Fill(this.dbPayrollSystemDataSet.tblEmployee);
 
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtEmployeeID.Text = dataGridView1.Rows[e.RowIndex].Cells[0].FormattedValue.ToString();
+            txtFirstName.Text = dataGridView1.Rows[e.RowIndex].Cells[1].FormattedValue.ToString();
+            txtLastName.Text = dataGridView1.Rows[e.RowIndex].Cells[2].FormattedValue.ToString();
+            gender = dataGridView1.Rows[e.RowIndex].Cells[3].FormattedValue.ToString();
+            txtNationalInsuranceNo.Text = dataGridView1.Rows[e.RowIndex].Cells[4].FormattedValue.ToString();
+            dtpDateOfBirth.Text = dataGridView1.Rows[e.RowIndex].Cells[5].FormattedValue.ToString();
+            maritalStatus = dataGridView1.Rows[e.RowIndex].Cells[6].FormattedValue.ToString();
+            isMember = Convert.ToBoolean(dataGridView1.Rows[e.RowIndex].Cells[7].FormattedValue.ToString());
+            textBoxAddress.Text = dataGridView1.Rows[e.RowIndex].Cells[8].FormattedValue.ToString();
+            textBoxCity.Text = dataGridView1.Rows[e.RowIndex].Cells[9].FormattedValue.ToString();
+            textBoxPostalCode.Text = dataGridView1.Rows[e.RowIndex].Cells[10].FormattedValue.ToString();
+            comboBoxCountry.Text = dataGridView1.Rows[e.RowIndex].Cells[11].FormattedValue.ToString();
+            textBoxContactNumber.Text = dataGridView1.Rows[e.RowIndex].Cells[12].FormattedValue.ToString();
+            textBoxEmailAddress.Text = dataGridView1.Rows[e.RowIndex].Cells[13].FormattedValue.ToString();
+            textBoxNotes.Text = dataGridView1.Rows[e.RowIndex].Cells[14].FormattedValue.ToString();
+
+
+            // Gender
+            if (gender == "Male")
+            {
+                radioButtonMale.Checked = true;
+                radioButtonFemale.Checked = false;
+            }
+            else
+            {
+                radioButtonMale.Checked = false;
+                radioButtonFemale.Checked = true;
+            }
+
+            // Marital Status
+            if (maritalStatus == "Married")
+            {
+                radioButtonMarried.Checked = true;
+                radioButtonSingle.Checked = false;
+            }
+            else
+            {
+                radioButtonMarried.Checked = false;
+                radioButtonSingle.Checked = true;
+            }
+
+            // Union Member
+            if (isMember == true)
+            {
+                checkBoxIsMember.Checked = true;
+            }
+            else
+            {
+                checkBoxIsMember.Checked = false;
+
+            }
         }
     }
 }
