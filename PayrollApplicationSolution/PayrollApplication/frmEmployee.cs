@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions; // Regular Expression is a pattern that could be matched against an input text
 using System.Net.Mail; //using System.Net.Mail.MailAddress;
+using System.Configuration; 
+using System.Data.SqlClient;
 
 namespace PayrollApplication
 {
@@ -297,22 +299,68 @@ namespace PayrollApplication
             }
         }
 
+        // Add Employee functionality
         private void buttonAddEmployee_Click(object sender, EventArgs e)
         {
 
             if (isControlIsDataValid()) // To check if the form is already filled.
             {
-                MessageBox.Show("Employee Added!");
+                CheckedItems();
+                // Connection String
+                // Need to add on references to access this
+                string cs = ConfigurationManager.ConnectionStrings["dbPayrollSystemConnectionString"].ConnectionString;
+
+                // Instantiate the Sql Connection
+                SqlConnection objSqlCon = new SqlConnection(cs);
+
+                try
+                {
+                    // Open Connection
+                    objSqlCon.Open();
+
+                    // Prepare Insert Command
+                    string insertCmd = "INSERT INTO tblEmployee VALUES("+Convert.ToInt32(txtEmployeeID.Text)+", '"
+                        +txtFirstName.Text+"','"+txtLastName.Text+"','"+gender+ "','"+txtNationalInsuranceNo.Text+ "','"
+                        +dtpDateOfBirth.Value.ToString("MM/dd/yyyy")+ "', '"+maritalStatus+ "','"+isMember+ "', '"+textBoxAddress.Text+ "', '"
+                        +textBoxCity.Text+ "', '"+textBoxPostalCode.Text+ "','"+comboBoxCountry.SelectedIndex.ToString()+ "', '"
+                        +textBoxContactNumber.Text+ "','"+textBoxEmailAddress.Text+ "','"+textBoxNotes.Text+"')";
+
+                    // Instantiate SQLCommand and Pass in CommandText and Connection Object
+                    SqlCommand objSqlCommand = new SqlCommand(insertCmd, objSqlCon);
+
+                    // Execute the query identified within our command object
+                    objSqlCommand.ExecuteNonQuery();
+
+                    // TODO: This line of code loads data into the 'dbPayrollSystemDataSet.tblEmployee' table. You can move, or remove it, as needed.
+                    this.tblEmployeeTableAdapter.Fill(this.dbPayrollSystemDataSet.tblEmployee);
+
+                    // Display success message
+                    MessageBox.Show("Employee with ID :" + txtEmployeeID.Text + " " + "has been added successfully!", "Insert Succesful!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("The following error occured :" + ex.Message, "Data entry error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    // Close connection
+                    objSqlCon.Close();
+                }
+
             }
         }
+
         private void buttonUpdateEmployee_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Employee Updated");
         }
+
         private void buttonDeleteEmployee_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Employee Deleted");
         }
+
         private void buttonReset_Click(object sender, EventArgs e)
         {
             txtEmployeeID.Clear();
@@ -333,6 +381,7 @@ namespace PayrollApplication
             textBoxEmailAddress.Text = "";
             textBoxNotes.Text = "";
         }
+
         private void buttonPreview_Click(object sender, EventArgs e)
         {
             // Arguments are values or stream of data that is passed into a method via the calling method. 
@@ -346,10 +395,12 @@ namespace PayrollApplication
             objFormPreview.ShowDialog();
 
         }
+
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
 
         #region Keypress Event Validation
         // Set the EmployeeID to number and backspace only
@@ -378,5 +429,12 @@ namespace PayrollApplication
             }
         }
         #endregion
+
+        private void frmEmployee_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'dbPayrollSystemDataSet.tblEmployee' table. You can move, or remove it, as needed.
+            this.tblEmployeeTableAdapter.Fill(this.dbPayrollSystemDataSet.tblEmployee);
+
+        }
     }
 }
